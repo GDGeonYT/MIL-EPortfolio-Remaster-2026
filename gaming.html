@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Profile</title>
+  <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+  <link rel="stylesheet" href="manual.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+        background: url('assets/BG 2.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(0, 0, 0, 0.63);
+        z-index: -1;
+    }
+
+    .gaming-page {
+      width: min(1100px, calc(100% - 32px));
+      margin: clamp(2rem, 5vw, 4rem) auto;
+    }
+
+    .gaming-card {
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(18, 18, 18, 0.96);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .gaming-banner {
+      display: block;
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .gaming-content {
+      padding: clamp(1.25rem, 4vw, 2.75rem);
+    }
+
+    .gaming-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .gaming-heading h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.35rem);
+      font-weight: 700;
+    }
+
+    .tracker-button {
+      flex: 0 0 auto;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid rgba(255, 215, 0, 0.65);
+      border-radius: 6px;
+      background: transparent;
+      color: #ffd700;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 180ms ease;
+    }
+
+    .tracker-button:hover,
+    .tracker-button:focus-visible {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin-bottom: 2rem;
+      padding: 0.35rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .featured-stat {
+      min-height: 0;
+      padding: 0.75rem 1rem;
+      border: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      background: transparent;
+    }
+
+    .featured-stat:last-child {
+      border-right: 0;
+    }
+
+    .featured-stat span,
+    .detail-item dt {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #b8b8b8;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .featured-stat strong {
+      display: block;
+      color: #fff;
+      font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+      font-weight: 700;
+    }
+
+    .featured-stat.rank-stat {
+      background: transparent;
+    }
+
+    .featured-stat.rank-stat strong {
+      color: #ffd700;
+    }
+
+    .profile-section + .profile-section {
+      margin-top: 1.7rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .profile-section h2 {
+      margin: 0 0 1.1rem;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .player-details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 0;
+    }
+
+    .detail-item {
+      padding: 0.7rem 0.15rem;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .detail-item dt {
+      margin-bottom: 0.25rem;
+      font-size: 0.82rem;
+    }
+
+    .detail-item dd {
+      margin: 0;
+      color: #f3f3f3;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .map-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .map-chip {
+      padding: 0.2rem 0.8rem 0.2rem 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #e9d77e;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .map-chip + .map-chip {
+      padding-left: 0.8rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .esports-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .esports-highlight {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 116px;
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .esports-highlight-copy {
+      min-width: 0;
+    }
+
+    .esports-highlight span {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #b8b8b8;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .esports-highlight strong {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .esports-highlight img {
+      display: block;
+      flex: 0 0 auto;
+      width: 84px;
+      height: 88px;
+      object-fit: contain;
+    }
+
+    .esports-highlight img.player-photo {
+      width: 116px;
+      height: 116px;
+      object-fit: cover;
+      object-position: 60% center;
+    }
+
+    .match-heading {
+      margin: 0 0 0.8rem;
+      color: #e6e6e6;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .match-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .match-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.75rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e6e6e6;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .match-list li::before {
+      content: "—";
+      flex: 0 0 auto;
+      color: #c7a900;
+    }
+
+    @media (max-width: 600px) {
+      .gaming-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .tracker-button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .featured-stats {
+        grid-template-columns: 1fr;
+        border-bottom: 0;
+      }
+
+      .featured-stat {
+        min-height: auto;
+        padding: 0.7rem 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .player-details,
+      .esports-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .esports-highlight img {
+        width: 76px;
+        height: 80px;
+      }
+
+      .esports-highlight img.player-photo {
+        width: 104px;
+        height: 104px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tracker-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<script src="node_modules\bootstrap\dist\js\bootstrap.bundle.js"></script>
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid" >
+      <a class="navbar-brand" style="margin-left: 8px;" href="index.html">Geon's Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="about.html">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="editing.html">Editing Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="gaming.html">Gaming Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="school.html">School Projects</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    
+  <main class="gaming-page">
+    <article class="gaming-card">
+      <img src="assets/Valorant.png" class="gaming-banner" alt="VALORANT game banner">
+      <div class="gaming-content">
+        <header class="gaming-heading">
+          <div>
+            <h1>Valorant Profile</h1>
+          </div>
+          <a class="tracker-button" href="https://tracker.gg/valorant/profile/riot/ODN%20GDGeon%234594/overview?platform=pc&playlist=competitive&season=ac12e9b3-47e6-9599-8fa1-0bb473e5efc7" target="_blank" rel="noopener noreferrer">View Valorant Tracker <span aria-hidden="true">↗</span></a>
+        </header>
+
+        <section class="featured-stats" aria-label="Featured player information">
+          <div class="featured-stat rank-stat">
+            <span>Current rank</span>
+            <strong>Gold 3</strong>
+          </div>
+          <div class="featured-stat">
+            <span>Role</span>
+            <strong>Duelist</strong>
+          </div>
+          <div class="featured-stat">
+            <span>Main agent</span>
+            <strong>Yoru</strong>
+          </div>
+        </section>
+
+        <section class="profile-section" aria-labelledby="player-info-heading">
+          <h2 id="player-info-heading">Player Info</h2>
+          <dl class="player-details">
+            <div class="detail-item"><dt>IGN</dt><dd>ODN GDGeon#4594</dd></div>
+            <div class="detail-item"><dt>Rank season</dt><dd>V26 Act 5</dd></div>
+            <div class="detail-item"><dt>Region</dt><dd>Asia Pacific</dd></div>
+            <div class="detail-item"><dt>Platform</dt><dd>PC</dd></div>
+            <div class="detail-item"><dt>Started playing</dt><dd>Episode 2: Act 1</dd></div>
+          </dl>
+        </section>
+
+        <section class="profile-section" aria-labelledby="favorite-maps-heading">
+          <h2 id="favorite-maps-heading">Best Maps</h2>
+          <ul class="map-list">
+            <li class="map-chip">Ascent <span>(V26 Act 5)</span></li>
+            <li class="map-chip">Lotus <span>(Overall)</span></li>
+          </ul>
+        </section>
+
+        <section class="profile-section" aria-labelledby="esports-heading">
+          <h2 id="esports-heading">Esports Interest</h2>
+          <div class="esports-summary">
+            <div class="esports-highlight">
+              <div class="esports-highlight-copy"><span>Favorite team</span><strong>Paper Rex</strong></div>
+              <img src="assets/Paper_Rex.png" alt="Paper Rex logo">
+            </div>
+            <div class="esports-highlight">
+              <div class="esports-highlight-copy"><span>Favorite player</span><strong>PRX Something</strong></div>
+              <img class="player-photo" src="assets/prx%20something%202026.png" alt="PRX Something">
+            </div>
+          </div>
+          <h3 class="match-heading">Favorite Tournaments &amp; Matches</h3>
+          <ul class="match-list">
+            <li>Valorant Champions LA 2023 Finals <span>|</span> PRX vs EG</li>
+            <li>Valorant Masters Toronto 2025 Finals <span>|</span> PRX vs FNC</li>
+            <li>Valorant Champions 2025 Finals <span>|</span> NRG vs FNC</li>
+          </ul>
+        </section>
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>
