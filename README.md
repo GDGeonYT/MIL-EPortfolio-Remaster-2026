@@ -1,32 +1,30 @@
-# 🌐 MIL E-Portfolio (2025–2026)
+# 🌐 MIL E-Portfolio (2026 Remastered)
 
-> A personal ePortfolio developed for Media and Information Literacy (MIL) as part of the Grade 12 Senior High School curriculum (ICT Track).
+> A polished personal portfolio website showcasing my journey, creative work, gaming profile, and academic achievements.
 
----
-
-### 📖 About the Project
-
-This repository hosts a multi-page web application showcasing my journey, video editing projects, gaming profiles, esports interests, and school performance tasks. Built with a clean, dark-mode dark aesthetic, it acts as both an academic submission and a personal showcase of my technical and creative work.
-
-> [!NOTE]  
-> **Author's Note:** All information, personal details, project stats, and content provided within this repository and portfolio are **outdated** and kept solely for archival and viewing purposes.
----
-
-### 🗂️ Features & Sections
-
-* **About Me:** Personal background, biography, Taekwondo achievement highlights, coding experience, and channel stats.
-* **Editing Projects:** Embedded video player and showcase of video edits (e.g., *Squid Game*, gaming montages) linked to YouTube (`@GDGeon`).
-* **Gaming Profiles:** Custom loadout, rank stats, and main operator/agent cards for titles like *VALORANT* and *Tom Clancy's Rainbow Six Siege X*.
-* **Esports Hub:** Curated roster of favorite esports teams (*Paper Rex*), players (*f0rsakeN, Patmen, Zekken, TenZ*), and memorable tournament matches.
-* **School Projects:** Interactive media timelines and performance tasks completed for Senior High School coursework.
+This repository contains the remastered 2026 version of my ePortfolio, redesigned with a cleaner aesthetic, improved layout, and a more modern presentation of my work. It serves as both a digital portfolio and an academic showcase for my Media and Information Literacy (MIL) subject.
 
 ---
 
-### 🛠️ Tech Stack
+## ✨ About the Project
 
-* **Frontend:** HTML5, CSS3, JavaScript
-* **Media & Assets:** Custom UI graphics, embedded video player components, and responsive cards
-* **Hosting:** GitHub Pages
+This portfolio highlights my growth as a student, creator, and gamer through a collection of personal and academic projects. It includes sections for:
+
+- About Me
+- Video Editing Projects
+- Gaming Profile
+- Esports Interests
+- School Performance Tasks
+- Personal Portfolio Showcase
+
+---
+
+## 🛠️ Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
 
 ---
 
